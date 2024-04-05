@@ -1,6 +1,6 @@
 // 1.check included string
 
-function checkString(str) {
+function checkStringExist(str) {
   if (str.includes("hello")) {
     return true;
   } else {
@@ -20,27 +20,30 @@ function shortenString(str) {
 
 // 3.copy string 10 times
 
-function copyString(str) {
+function repeatString10Times(str) {
+  let ret;
   for (let i = 0; i < 10; i++) {
-    str += str;
+    ret += str;
   }
   return str;
 }
 
 // 4.copy string 5 times with -
 
-function copyString2(str) {
-  for (let i = 0; i < 5; i++) {
-    str += "-";
+function repeatString(str) {
+  let ret = str;
+  for (let i = 0; i < 9; i++) {
+    ret += '-' + str;
   }
-  return str;
+  return ret;
 }
 
 // copy string n times with -
 
 function copyString3(str, n) {
-  for (let i = 0; i < n; i++) {
-    str += "-";
+  let ret = str;
+  for (let i = 0; i < n-1; i++) {
+    ret += '-' + str;
   }
   return str;
 }
@@ -54,11 +57,8 @@ function reverseString(str) {
 // 7.check symmetric string
 
 function checkSymmetricString(str) {
-  if (str === str.split("").reverse().join("")) {
-    return true;
-  } else {
-    return false;
-  }
+  str = str.toLowerCase().replace(/ /g, "");
+  return str === str.split("").reverse().join("");
 }
 
 // 8.check capital string
@@ -80,12 +80,20 @@ function calculateGlobularVolume(r) {
 // 10.calculate sum of numbers between a and b, include a and b
 
 function calculateSum(a, b) {
+  if (a > b) {
+    let temp = a;
+    b = temp;
+    a = b;
+  }
+  if (a === b || b - a === 1) return 0;
+
   let sum = 0;
-  for (let i = a; i <= b; i++) {
+  for (let i = a+1; i < b; i++) {
     sum += i;
   }
   return sum;
 }
+console.log(calculateSum(1,3));
 
 // 11.check prime number
 
@@ -93,38 +101,42 @@ function checkPrimeNumber(num) {
   if (num <= 1) {
     return false;
   }
-  for (let i = 2; i < num/2; i++) {
+  for (let i = 2; i <= num/2; i++) {
     if (num % i === 0) {
       return false;
     }
   }
   return true;
 }
+console.log(checkPrimeNumber(4));
 
-// 12.calculate sum of prime number smaller than a given number
+// 12.calculate sum of prime number smaller or equal than a given number
 
 function checkSumOfPrimeNumber(num) {
   let sum = 0;
-  for (let i = 2; i < num; i++) {
+  for (let i = 2; i <= num; i++) {
     if (checkPrimeNumber(i)) {
       sum += i;
     }
   }
   return sum;
 }
+console.log(checkSumOfPrimeNumber(9));
 
 // 13.calculate sum of divisor
 
 function calculateSumOfDivisor(num) {
   let sum = 0;
-  for (let i = 1; i < num; i++) {
+  for (let i = 0; i < num; i++) {
     if (num % i === 0) {
       sum += i;
     }
   }
+  sum += num;
+
   return sum;
 }
-
+console.log(calculateSumOfDivisor(10));
 // 14. sắp xếp các chữ số trong số nguyên để tạo ra số nhỏ nhất
 
 function arrange(num) {
@@ -139,16 +151,9 @@ function arrange(num) {
       break;
     }
   }
-  str.push(str.slice(index));
-  str.join('');
-  let ret = Number(str);
-  
-  return ret;
+  [str[0],str[index]] = [str[index],str[0]]
+  return Number(str.join(''));
 }
 
-function run () {
-  let num = 423560989;
-  arrange(num);
-  console.log(str);
-}
+console.log(arrange(537511100000));
 
