@@ -1,13 +1,9 @@
 // 1.check included string
 
-function checkStringExist(str) {
-  if (str.includes("hello")) {
-    return true;
-  } else {
-    return false;
-  }
+function checkStringExist(str1, str2) {
+  return str1.includes(str2);
 }
-
+console.log(checkStringExist("heello", "hee"));
 // 2.shorten string with first 8 characters and append ...
 
 function shortenString(str) {
@@ -25,7 +21,7 @@ function repeatString10Times(str) {
   for (let i = 0; i < 10; i++) {
     ret += str;
   }
-  return str;
+  return ret;
 }
 
 // 4.copy string 5 times with -
@@ -45,7 +41,7 @@ function copyString3(str, n) {
   for (let i = 0; i < n-1; i++) {
     ret += '-' + str;
   }
-  return str;
+  return ret;
 }
 
 // 6.reverse string
@@ -64,11 +60,7 @@ function checkSymmetricString(str) {
 // 8.check capital string
 
 function checkCapitalString(str) {
-  if (str === str.toUpperCase()) {
-    return true;
-  } else {
-    return false;
-  }
+  return str === str.toUpperCase();
 }
 
 // 9.calculate globular volume

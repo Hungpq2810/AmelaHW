@@ -156,12 +156,13 @@ function checkIncreasingArray(arr) {
 function checkDecreasingOddArray(arr) {
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] % 2 === 0) return false;
-        if (arr[i] > arr[i - 1]) {
+        if (arr[i] >= arr[i - 1]) {
             return false;
         }
     }
     return true;
 }
+console.log(checkDecreasingOddArray([5, 3, 3, 1, 1]));
 
 // 14. Get keys of object
 
